@@ -6,7 +6,9 @@ import db from "./config/db.config.js";
 import chalk from "chalk";
 import morganBody from "morgan-body";
 import apidocsRoutes from "./routes/api-docs.routes.js";
-import http from "http"
+import http from "http";
+import dashboardRoutes from "./routes/dashboar.routes.js";
+import orderRoutes from "./routes/order.routes.js";
 
 const app = express();
 morganBody(app);
@@ -34,6 +36,8 @@ app.use(
 
 app.use(authRoutes);
 app.use(apidocsRoutes);
+app.use(dashboardRoutes);
+app.use(orderRoutes);
 
 try {
   await db.authenticate();
