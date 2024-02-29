@@ -1,7 +1,18 @@
 import { DataTypes } from "sequelize";
+import { UUIDV4 } from "sequelize";
 import Db from "../config/db.config.js";
 
 const Order = Db.define("orders", {
+  orderId: {
+    type: DataTypes.UUID,
+    defaultValue: UUIDV4,
+    primaryKey: true,
+    allowNull: false,
+    validate: {
+      isUUID: 4,
+    },
+  },
+
   name: {
     type: DataTypes.STRING,
   },

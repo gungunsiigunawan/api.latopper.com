@@ -2,7 +2,7 @@ import express from "express";
 import {
   VERIFY_TOKEN,
 } from "../middleware/authJwt.js";
-import { order } from "../controllers/order.controller.js";
+import { order, inquiryOrder} from "../controllers/order.controller.js";
 
 const orderRoutes = express.Router();
 orderRoutes.use((req, res, next) => {
@@ -10,9 +10,16 @@ orderRoutes.use((req, res, next) => {
   res.header("x-powered-by", "latopper.com");
   next();
 });
+
 orderRoutes.post(
   "/orders",
   [VERIFY_TOKEN],
   order
+);
+
+orderRoutes.get(
+  "/orders",
+  [VERIFY_TOKEN],
+  inquiryOrder
 );
 export default orderRoutes;
