@@ -7,7 +7,7 @@ export const order = async (req, res) => {
       ? req.body.address.toString().toLowerCase()
       : "";
     const notes = req.body.notes ? req.body.notes.toString().toLowerCase() : "";
-    const theme = req.body.theme ? req.body.theme.toString().toLowerCase() : "";
+    const themeId = req.body.themeId ? req.body.themeId.toString().toLowerCase() : "";
 
     const addOrder = await Orders.create({
       name: name,
@@ -15,7 +15,7 @@ export const order = async (req, res) => {
       date: req.body.date,
       age: req.body.age,
       notes: notes,
-      theme: theme,
+      themeId: themeId,
     });
 
     return res
