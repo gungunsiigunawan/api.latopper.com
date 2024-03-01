@@ -19,7 +19,6 @@ orderRoutes.post(
 
 orderRoutes.get(
   "/orders",
-  [VERIFY_TOKEN],
   inquiryOrder
 );
 export default orderRoutes;
